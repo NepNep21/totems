@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Totem generator</title>
+
+    <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css"/>
+
+    <style>
+      html, body {
+        height: 100%;
+      }
+
+      .margin {
+        margin: 1em auto;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: lightpink;">
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100%;">
+      <h1>Create your own totem!</h1>
+      <form action="/get-totem" style="display: flex; flex-direction: column; align-items: center;" class="margin" method="get">
+        <input type="text" placeholder="Username" name="username"/>
+        <p class="margin">Version:</p>
+        <select name="version">
+          <option value="3">1.11-1.12.2</option>
+          <option value="4">1.13-1.14.4</option>
+          <option value="5">1.15-1.16.1</option>
+          <option value="6">1.16.2-1.16.5</option>
+          <option value="7">1.17-1.17.1</option>
+          <option value="8">1.18-1.18.2</option>
+          <option value="9" selected>1.19+</option>
+        </select>
+        <input type="submit" value="Create" style="margin-top: 1em;"/>
+      </form>
+    </div>
+  </body>
+</html>

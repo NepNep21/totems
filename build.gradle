@@ -1,0 +1,43 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.10'
+}
+
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'io.ktor:ktor-server-core:2.1.0'
+    implementation 'io.ktor:ktor-server-netty:2.1.0'
+    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.18.0'
+    implementation 'com.github.reugn:sketch:8eb68c9'
+    implementation 'com.google.code.gson:gson:2.9.1'
+}
+
+jar {
+    duplicatesStrategy = 'EXCLUDE'
+    manifest {
+        attributes(
+                'Main-Class': 'club.bottomservices.totems.AppKt'
+        )
+    }
+    from {
+        configurations
+                .runtimeClasspath
+                .findAll { !it.name.endsWith('pom') }
+                .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
